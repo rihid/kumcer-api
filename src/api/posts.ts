@@ -10,7 +10,7 @@ interface Post {
   tags: string[]
 }
 
-const posts: Post[] = [
+let posts: Post[] = [
   {
     id: 1,
     title: "Dodolit-dodolit-dodolibret",
@@ -51,8 +51,8 @@ app.get('/:id', (c) => {
     }, 404)
   }
 })
-// Post cerpen
-app.post('/new', async (c) => {
+// post cerpen
+app.post('/new', async(c) => {
   const post: Post = await c.req.json()
 
   post.id = posts.length + 1;
@@ -62,6 +62,26 @@ app.post('/new', async (c) => {
     data: post,
     ok: true,
   }, 201)
+})
+// delete cerpen by id
+app.delete('/:id', (c) => {
+  const id = parseInt(c.req.param('id'));
+  const post = posts.find( p => p.id === id);
+
+  if(post) {
+    const updatedPosts = posts.filter( p => p.id !== id);
+    posts = [...updatedPosts]
+    return c.json({
+      message: 'Cerpen Deleted!',
+      data: [],
+      ok: true,
+    })
+  } else {
+    return c.json({
+      message: 'Cerpen not found',
+      ok: false,
+    }, 404)
+  }
 })
 
 export default app;
