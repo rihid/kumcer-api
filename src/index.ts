@@ -42,7 +42,7 @@ app.get('/posts', (c) => {
 app.get('/posts/:id', (c) => {
   const id = parseInt(c.req.param('id'))
   const post = posts.find((p) => p.id === id)
-  
+
   if (post) {
     return c.json({
       data: post,
@@ -54,6 +54,18 @@ app.get('/posts/:id', (c) => {
       ok: false,
     }, 404)
   }
+})
+// Post cerpen
+app.post('/posts/new', async (c) => {
+  const post: Post = await c.req.json()
+
+  post.id = posts.length + 1;
+  posts.push(post);
+
+  return c.json({
+    data: post,
+    ok: true,
+  }, 201)
 })
 
 const port = 3030
