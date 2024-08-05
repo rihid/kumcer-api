@@ -63,6 +63,25 @@ app.post('/new', async(c) => {
     ok: true,
   }, 201)
 })
+// Update cerpen by id
+app.put('/:id', async (c) => {
+  const id = parseInt(c.req.param('id'));
+  const updatedPost: Post = await c.req.json();
+  const index = posts.findIndex((p) => p.id === id);
+
+  if (index !== -1) {
+    posts[index] = { ...posts[index], ...updatedPost, id };
+    return c.json({
+      data: posts[index],
+      ok: true,
+    });
+  } else {
+    return c.json({
+      message: 'Post not found',
+      ok: false,
+    }, 404);
+  }
+});
 // delete cerpen by id
 app.delete('/:id', (c) => {
   const id = parseInt(c.req.param('id'));
