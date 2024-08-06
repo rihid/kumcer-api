@@ -5,6 +5,7 @@ FROM oven/bun:debian
 # Create and change to the app directory
 WORKDIR /usr/src/app
 
+# TODO: Reorder the COPY and RUN command to make use of Docker cache
 # Copy app files
 COPY . .
 
