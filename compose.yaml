@@ -1,0 +1,7 @@
+services:
+  kumcer-service:
+    image: kumcer-api
+    build:
+      context: .
+    ports:
+      - "3030:3030"
