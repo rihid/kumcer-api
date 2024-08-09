@@ -5,6 +5,8 @@ const app = new Hono()
 interface Post {
   id: number,
   title: string,
+  // TODO: Can make use of JSX here since Hono support JSX directly.
+  // Just need to import React.Element as the type.
   body: string,
   author: string,
   tags: string[]
@@ -52,6 +54,8 @@ app.get('/:id', (c) => {
   }
 })
 // post cerpen
+// TODO: When implementing REST API, we don't need to have method as endpoint.
+// POST /posts is sufficient compared to POST /posts/new
 app.post('/new', async(c) => {
   const post: Post = await c.req.json()
 
