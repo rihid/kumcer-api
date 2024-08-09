@@ -3,15 +3,16 @@
 FROM oven/bun:debian
 
 # Create and change to the app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # TODO: Reorder the COPY and RUN command to make use of Docker cache
-# Copy app files
-COPY . .
+COPY bun.lockb package.json ./
 
 # Install app dependencies
 RUN bun install
-EXPOSE 3030
+
+# Copy app files
+COPY . .
 
 # Run the application
 CMD ["bun", "start"]
