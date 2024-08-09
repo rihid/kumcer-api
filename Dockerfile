@@ -10,6 +10,7 @@ COPY . .
 
 # Install app dependencies
 RUN bun install
+EXPOSE 3030
 
 # Run the application
 CMD ["bun", "start"]
