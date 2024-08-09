@@ -56,7 +56,7 @@ app.get('/:id', (c) => {
 // post cerpen
 // TODO: When implementing REST API, we don't need to have method as endpoint.
 // POST /posts is sufficient compared to POST /posts/new
-app.post('/new', async(c) => {
+app.post('/', async(c) => {
   const post: Post = await c.req.json()
 
   post.id = posts.length + 1;
@@ -68,7 +68,7 @@ app.post('/new', async(c) => {
   }, 201)
 })
 // Update cerpen by id
-app.put('/:id', async (c) => {
+app.patch('/:id', async (c) => {
   const id = parseInt(c.req.param('id'));
   const updatedPost: Post = await c.req.json();
   const index = posts.findIndex((p) => p.id === id);
