@@ -5,3 +5,14 @@ services:
       context: .
     ports:
       - "3030:3030"
+  database:
+    image: postgres:alpine
+    ports:
+      - "5445:5432"
+    env_file:
+      - path: .env
+        required: true
+    volumes:
+      - pgdata:/var/lib/postgresql/kumcerdata
+volumes:
+  pgdata:
