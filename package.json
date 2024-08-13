@@ -6,10 +6,13 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.12.0",
-    "hono": "^4.5.3"
+    "drizzle-orm": "^0.33.0",
+    "hono": "^4.5.3",
+    "postgres": "^3.4.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
+    "drizzle-kit": "^0.24.0",
     "tsx": "^4.7.1"
   }
 }

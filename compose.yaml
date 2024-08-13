@@ -5,6 +5,8 @@ services:
       context: .
     ports:
       - "3030:3030"
+    depends_on:
+      - database
   database:
     image: postgres:alpine
     ports:
