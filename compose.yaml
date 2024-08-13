@@ -1,4 +1,5 @@
 services:
+
   kumcer-service:
     image: kumcer-api
     build:
@@ -7,6 +8,9 @@ services:
       - "3030:3030"
     depends_on:
       - database
+    env_file:
+      - path: .env
+        required: true
   database:
     image: postgres:alpine
     ports:
