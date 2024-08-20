@@ -5,7 +5,7 @@ services:
     build:
       context: .
     ports:
-      - "3030:3030"
+      - "3000:3000"
     depends_on:
       - database
     env_file:

@@ -11,8 +11,8 @@ app.get('/', (c) => {
 
 app.route('/posts', posts);
 
-const port = 3030
-console.log(`Server is running on port ${port}: http://localhost:3030`)
+const port = 3000
+console.log(`Server is running on port ${port}: http://localhost:3000`)
 
 serve({
   fetch: app.fetch,
