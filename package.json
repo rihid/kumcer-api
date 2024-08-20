@@ -2,7 +2,7 @@
   "name": "kumcer-api",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "start": "bun run src/index.ts"
+    "start": "bunx drizzle-kit migrate && bun run src/index.ts"
   },
   "dependencies": {
     "@hono/node-server": "^1.12.0",
